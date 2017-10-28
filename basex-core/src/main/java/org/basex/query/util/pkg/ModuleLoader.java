@@ -73,6 +73,14 @@ public final class ModuleLoader {
     if(java) {
       className = uri.substring(JAVAPREF.length());
     } else {
+        try {
+            qp.module(Strings.uri2path(uri), uri, ii);
+            return true;
+          } catch (Exception e) {
+              e.printStackTrace();
+            return false;
+          }
+        /*
       // no "java:" prefix: check EXPath repositories
       final HashSet<String> pkgs = context.repo.nsDict().get(uri);
       if(pkgs != null) {
@@ -101,6 +109,7 @@ public final class ModuleLoader {
       }
       // convert to Java notation
       className = Strings.className(path);
+      */
     }
 
     // load Java module
