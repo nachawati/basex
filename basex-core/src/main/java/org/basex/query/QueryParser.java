@@ -804,6 +804,7 @@ public class QueryParser extends InputParser {
 
     qc.modStack.push(tPath);
     final QueryParser qp = new QueryParser(qu, io.path(), qc, null);
+    qp.sc.resolver = sc.resolver;
     final LibraryModule lib = qp.parseLibrary(false);
     final byte[] muri = lib.name.uri();
 
